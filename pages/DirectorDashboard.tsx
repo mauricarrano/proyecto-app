@@ -10,10 +10,11 @@ interface DirectorDashboardProps {
     openAnnouncementModal: () => void;
 }
 
-const KPICard: React.FC<{ icon: React.ReactNode; title: string; value: string | number; color: string; }> = ({ icon, title, value, color }) => (
+// Fix: Changed icon prop type from React.ReactNode to React.ReactElement to fix a TypeScript error with React.cloneElement.
+const KPICard: React.FC<{ icon: React.ReactElement; title: string; value: string | number; color: string; }> = ({ icon, title, value, color }) => (
     <div className="bg-slate-800 p-4 rounded-lg flex items-center gap-4">
         <div className={`p-3 rounded-full bg-${color}-500/10`}>
-            {React.cloneElement(icon as React.ReactElement, { className: `w-6 h-6 text-${color}-400` })}
+            {React.cloneElement(icon, { className: `w-6 h-6 text-${color}-400` })}
         </div>
         <div>
             <p className="text-2xl font-bold">{value}</p>
