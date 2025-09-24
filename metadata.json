@@ -1,0 +1,5 @@
+{
+  "name": "Academia Digital",
+  "description": "An integral academic application for colleges, designed for Students, Professors, and Preceptors. Features role-based access, course management, attendance tracking, and career-specific visual themes.",
+  "requestFramePermissions": []
+}
