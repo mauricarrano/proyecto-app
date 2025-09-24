@@ -47,4 +47,7 @@ export const MapPinIcon: React.FC<IconProps> = ({ className }) => <IconWrapper c
 export const MailIcon: React.FC<IconProps> = ({ className }) => <IconWrapper className={className}><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></IconWrapper>;
 export const FacebookIcon: React.FC<IconProps> = ({ className }) => <IconWrapper className={className}><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></IconWrapper>;
 export const UsersIcon: React.FC<IconProps> = ({ className }) => <IconWrapper className={className}><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></IconWrapper>;
-export const StudentUnionIcon = UsersIcon;
+export const BriefcaseIcon: React.FC<IconProps> = ({ className }) => <IconWrapper className={className}><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></IconWrapper>;
+
+export const StudentUnionIcon: React.FC<IconProps> = (props) => <UsersIcon {...props} />;
+export const DirectorIcon: React.FC<IconProps> = (props) => <BriefcaseIcon {...props} />;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAppContext } from '../hooks/useAppContext';
 import Card from '../components/ui/Card';
-import { AttendanceIcon, SendIcon, StatsIcon, BellIcon, ClockIcon, CheckCircleIcon } from '../components/Icon';
+import { AttendanceIcon, SendIcon, StatsIcon, BellIcon, ClockIcon, CheckCircleIcon, CalendarIcon } from '../components/Icon';
 import { getPreceptorTasks } from '../services/mockData';
 import type { PreceptorTask } from '../types';
 
@@ -30,19 +30,25 @@ const PreceptorDashboard: React.FC<PreceptorDashboardProps> = ({ setPage, openAn
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
                 
                 {/* Left Column: Actions */}
-                <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-6">
-                    <Card onClick={() => setPage('attendance-management')} className="md:col-span-1 flex flex-col items-center justify-center p-6 text-center">
-                        <AttendanceIcon className="w-10 h-10 text-sky-400 mb-3"/>
-                        <span className="font-semibold text-lg">Gestionar Asistencias</span>
-                    </Card>
-                    <Card onClick={openAnnouncementModal} className="md:col-span-1 flex flex-col items-center justify-center p-6 text-center">
-                        <SendIcon className="w-10 h-10 text-green-400 mb-3"/>
-                        <span className="font-semibold text-lg">Enviar Comunicado</span>
-                    </Card>
-                    <Card onClick={() => setPage('reports')} className="md:col-span-1 flex flex-col items-center justify-center p-6 text-center">
-                        <StatsIcon className="w-10 h-10 text-amber-400 mb-3"/>
-                        <span className="font-semibold text-lg">Ver Reportes</span>
-                    </Card>
+                <div className="lg:col-span-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <Card onClick={() => setPage('attendance-management')} className="flex flex-col items-center justify-center p-6 text-center">
+                            <AttendanceIcon className="w-10 h-10 text-sky-400 mb-3"/>
+                            <span className="font-semibold text-lg">Gestionar Asistencias</span>
+                        </Card>
+                         <Card onClick={() => setPage('schedule')} className="flex flex-col items-center justify-center p-6 text-center">
+                            <CalendarIcon className="w-10 h-10 text-purple-400 mb-3"/>
+                            <span className="font-semibold text-lg">Gestionar Agenda</span>
+                        </Card>
+                        <Card onClick={openAnnouncementModal} className="flex flex-col items-center justify-center p-6 text-center">
+                            <SendIcon className="w-10 h-10 text-green-400 mb-3"/>
+                            <span className="font-semibold text-lg">Enviar Comunicado</span>
+                        </Card>
+                        <Card onClick={() => setPage('reports')} className="flex flex-col items-center justify-center p-6 text-center">
+                            <StatsIcon className="w-10 h-10 text-amber-400 mb-3"/>
+                            <span className="font-semibold text-lg">Ver Reportes</span>
+                        </Card>
+                    </div>
                 </div>
 
                 {/* Right Column: Pending Tasks */}

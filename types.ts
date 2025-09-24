@@ -1,4 +1,4 @@
-export type Role = 'student' | 'professor' | 'preceptor' | 'student_union_member';
+export type Role = 'student' | 'professor' | 'preceptor' | 'student_union_member' | 'director';
 export type Career = 'software' | 'design';
 
 export interface User {
@@ -49,6 +49,11 @@ export interface ScheduleItem {
   location: string;
 }
 
+export interface ScheduleOverride {
+  time?: string;
+  location?: string;
+}
+
 export type CalendarEventType = 'class' | 'exam' | 'final' | 'event' | 'reminder';
 
 export interface CalendarEvent {
@@ -56,6 +61,7 @@ export interface CalendarEvent {
   title: string;
   type: CalendarEventType;
   time?: string;
+  location?: string;
   color?: string;
 }
 
@@ -211,4 +217,11 @@ export interface ChatContact {
     name: string;
     profilePictureUrl: string;
     isOnline: boolean;
+}
+
+export interface InstituteKPIs {
+  totalStudents: number;
+  totalStaff: number;
+  attendanceRate: number;
+  averageGrade: number;
 }

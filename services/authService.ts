@@ -39,6 +39,15 @@ const mockUsers: MockUser[] = [
     profilePictureUrl: 'https://picsum.photos/seed/union/200',
     aboutMe: 'Presidente del Centro de Estudiantes. Comprometido con el bienestar y la voz de todos los alumnos.'
   },
+  {
+    email: 'director@academia.com',
+    password_hash: '1234',
+    name: 'Laura Directora',
+    role: 'director',
+    career: 'software',
+    profilePictureUrl: 'https://picsum.photos/seed/director/200',
+    aboutMe: 'Directora del Instituto. Dedicada a la excelencia académica y al desarrollo integral de la comunidad educativa.'
+  },
 ];
 
 export const attemptLogin = (email: string, password: string): User | null => {

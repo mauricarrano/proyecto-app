@@ -5,6 +5,7 @@ import StudentDashboard from '../../pages/StudentDashboard';
 import ProfessorDashboard from '../../pages/ProfessorDashboard';
 import PreceptorDashboard from '../../pages/PreceptorDashboard';
 import StudentUnionDashboard from '../../pages/StudentUnionDashboard';
+import DirectorDashboard from '../../pages/DirectorDashboard';
 import AttendancePage from '../../pages/AttendancePage';
 import GradesPage from '../../pages/GradesPage';
 import SchedulePage from '../../pages/SchedulePage';
@@ -61,7 +62,14 @@ const ProfilePage: React.FC<{ setPage: (page: string) => void, openAnnouncementM
     if (!user) return null;
 
     const { name, email, role, career, profilePictureUrl, aboutMe, studentId, yearOfStudy } = user;
-    const roleText = role === 'student_union_member' ? 'Centro de Estudiantes' : role;
+    const roleTextMapping: Record<User['role'], string> = {
+        student: 'Alumno',
+        professor: 'Profesor',
+        preceptor: 'Preceptor',
+        student_union_member: 'Centro de Estudiantes',
+        director: 'Director',
+    };
+    const roleText = roleTextMapping[role];
 
     return (
         <div className="max-w-4xl mx-auto">
@@ -317,6 +325,8 @@ const MainLayout: React.FC = () => {
         const professorDashboardProps = {
             setPage: setPage,
         };
+        
+        const openAnnouncementModal = () => setIsAnnouncementModalOpen(true);
 
         const renderDashboard = () => {
             if (!user) return null;
@@ -326,9 +336,11 @@ const MainLayout: React.FC = () => {
                 case 'professor':
                     return <ProfessorDashboard {...professorDashboardProps} />;
                 case 'preceptor':
-                    return <PreceptorDashboard setPage={setPage} openAnnouncementModal={() => setIsAnnouncementModalOpen(true)} />;
+                    return <PreceptorDashboard setPage={setPage} openAnnouncementModal={openAnnouncementModal} />;
                 case 'student_union_member':
                     return <StudentUnionDashboard setPage={setPage} />;
+                case 'director':
+                    return <DirectorDashboard setPage={setPage} openAnnouncementModal={openAnnouncementModal} />;
                 default:
                     return <StudentDashboard {...studentDashboardProps} />;
             }

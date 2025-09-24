@@ -1,5 +1,5 @@
 import React from 'react';
-import { DashboardIcon, AttendanceIcon, GraduationCapIcon, CalendarIcon, UserCircleIcon, CommunicationsIcon, PenSquareIcon, StatsIcon } from '../Icon';
+import { DashboardIcon, AttendanceIcon, GraduationCapIcon, CalendarIcon, UserCircleIcon, CommunicationsIcon, PenSquareIcon, StatsIcon, DirectorIcon } from '../Icon';
 import { useAppContext } from '../../hooks/useAppContext';
 
 interface BottomNavProps {
@@ -44,6 +44,14 @@ const STUDENT_UNION_NAV_ITEMS: NavItem[] = [
     { label: 'Perfil', icon: <UserCircleIcon />, page: 'profile' },
 ];
 
+const DIRECTOR_NAV_ITEMS: NavItem[] = [
+    { label: 'Panel', icon: <DashboardIcon />, page: 'dashboard' },
+    { label: 'Reportes', icon: <StatsIcon />, page: 'reports' },
+    { label: 'Comms', icon: <CommunicationsIcon />, page: 'communications' },
+    { label: 'Agenda', icon: <CalendarIcon />, page: 'schedule' },
+    { label: 'Perfil', icon: <UserCircleIcon />, page: 'profile' },
+];
+
 
 const BottomNav: React.FC<BottomNavProps> = ({ setPage, currentPage }) => {
     const { user } = useAppContext();
@@ -55,6 +63,7 @@ const BottomNav: React.FC<BottomNavProps> = ({ setPage, currentPage }) => {
             case 'professor': return PROFESSOR_NAV_ITEMS;
             case 'preceptor': return PRECEPTOR_NAV_ITEMS;
             case 'student_union_member': return STUDENT_UNION_NAV_ITEMS;
+            case 'director': return DIRECTOR_NAV_ITEMS;
             default: return [];
         }
     };

@@ -1,4 +1,4 @@
-import type { AttendanceRecord, GradeStat, Career, ScheduleItem, CalendarEvent, ForumPost, UpcomingDeadline, Notification, AssignmentToGrade, ProfessorCourse, StudentGradeRecord, StudentDailyAttendance, AttendanceStatus, Role, Conversation, FullConversation, ChatMessage, AttendanceSummary, AtRiskStudent, User, StudentSearchResult, StudentFile, ObservationRecord, PreceptorTask, Procedure, ProcedureRequest, ChatContact } from '../types';
+import type { AttendanceRecord, GradeStat, Career, ScheduleItem, CalendarEvent, ForumPost, UpcomingDeadline, Notification, AssignmentToGrade, ProfessorCourse, StudentGradeRecord, StudentDailyAttendance, AttendanceStatus, Role, Conversation, FullConversation, ChatMessage, AttendanceSummary, AtRiskStudent, User, StudentSearchResult, StudentFile, ObservationRecord, PreceptorTask, Procedure, ProcedureRequest, ChatContact, InstituteKPIs } from '../types';
 
 const subjectsByCareer: Record<Career, string[]> = {
     software: [
@@ -179,7 +179,7 @@ export const getUpcomingDeadlines = (): UpcomingDeadline[] => {
 };
 
 export const getNotifications = (role: Role): Notification[] => {
-  if (role === 'professor' || role === 'preceptor') {
+  if (role === 'professor' || role === 'preceptor' || role === 'director') {
     return [
       {
         id: 'p1',
@@ -678,4 +678,14 @@ const procedureRequests: ProcedureRequest[] = [
 
 export const getProcedureRequests = (): ProcedureRequest[] => {
     return procedureRequests;
+};
+
+// --- Mock Data for Director Dashboard ---
+export const getInstituteKPIs = (): InstituteKPIs => {
+    return {
+        totalStudents: 348,
+        totalStaff: 42,
+        attendanceRate: 87,
+        averageGrade: 7.8
+    };
 };

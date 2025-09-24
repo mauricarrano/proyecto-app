@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { useAppContext } from '../hooks/useAppContext';
 import Card from '../components/ui/Card';
-import { ClockIcon, PenSquareIcon, GraduationCapIcon, AttendanceIcon, SendIcon, XIcon, CheckCircleIcon } from '../components/Icon';
+import { ClockIcon, PenSquareIcon, GraduationCapIcon, AttendanceIcon, SendIcon, XIcon, CheckCircleIcon, CalendarIcon } from '../components/Icon';
 import ForumWidget from '../components/ForumWidget';
 import { getSchedule, getProfessorAssignmentsToGrade, getProfessorCourses } from '../services/mockData';
 
@@ -116,7 +116,7 @@ const ProfessorDashboard: React.FC<ProfessorDashboardProps> = ({ setPage }) => {
             <h1 className="text-2xl md:text-3xl font-bold mb-2">Panel del Profesor</h1>
             <p className="text-md md:text-lg text-[rgb(var(--color-text-secondary))] mb-8">Bienvenido, {user.name}.</p>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
                 <Card onClick={() => setPage('grades-management')} className="flex items-center gap-4 !p-4 cursor-pointer hover:bg-slate-700/50">
                     <div className="p-3 bg-green-500/10 rounded-lg"><GraduationCapIcon className="w-6 h-6 text-green-400"/></div>
                     <span className="font-semibold">Cargar Notas</span>
@@ -124,6 +124,10 @@ const ProfessorDashboard: React.FC<ProfessorDashboardProps> = ({ setPage }) => {
                  <Card onClick={() => setPage('attendance-management')} className="flex items-center gap-4 !p-4 cursor-pointer hover:bg-slate-700/50">
                     <div className="p-3 bg-sky-500/10 rounded-lg"><AttendanceIcon className="w-6 h-6 text-sky-400"/></div>
                     <span className="font-semibold">Tomar Asistencia</span>
+                </Card>
+                <Card onClick={() => setPage('schedule')} className="flex items-center gap-4 !p-4 cursor-pointer hover:bg-slate-700/50">
+                    <div className="p-3 bg-purple-500/10 rounded-lg"><CalendarIcon className="w-6 h-6 text-purple-400"/></div>
+                    <span className="font-semibold">Editar Agenda</span>
                 </Card>
                  <Card onClick={() => setIsAnnouncementModalOpen(true)} className="flex items-center gap-4 !p-4 cursor-pointer hover:bg-slate-700/50">
                     <div className="p-3 bg-amber-500/10 rounded-lg"><SendIcon className="w-6 h-6 text-amber-400"/></div>
