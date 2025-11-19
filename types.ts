@@ -1,3 +1,4 @@
+
 export type Role = 'student' | 'professor' | 'preceptor' | 'student_union_member' | 'director';
 export type Career = 'software' | 'design';
 
@@ -10,6 +11,8 @@ export interface User {
   studentId?: string;
   yearOfStudy?: string;
   aboutMe?: string;
+  dni?: string;
+  address?: string;
 }
 
 export interface Theme {

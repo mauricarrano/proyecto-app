@@ -20,6 +20,8 @@ const UserSchema = new mongoose.Schema({
   studentId: String,
   yearOfStudy: String,
   aboutMe: String,
+  dni: String,
+  address: String,
 }, { timestamps: true });
 
 // Attendance Schema mirroring AttendanceRecord

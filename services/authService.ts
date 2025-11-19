@@ -1,4 +1,5 @@
-import type { User } from '../types';
+
+import type { User, Career } from '../types';
 
 export interface MockUser extends User {
   password_hash: string;
@@ -62,4 +63,46 @@ export const attemptLogin = (email: string, password: string): User | null => {
   }
 
   return null;
+};
+
+interface RegisterData {
+    firstName: string;
+    lastName: string;
+    dni: string;
+    address: string;
+    career: Career;
+    email: string;
+    password: string;
+}
+
+export const registerUser = (data: RegisterData): User | { error: string } => {
+    // Check if email already exists
+    const exists = mockUsers.some(u => u.email.toLowerCase() === data.email.toLowerCase());
+    if (exists) {
+        return { error: 'El correo electrónico ya está registrado.' };
+    }
+
+    // Generate a mock student ID
+    const randomId = Math.floor(10000 + Math.random() * 90000);
+    const studentId = `S-${randomId}`;
+
+    const newUser: MockUser = {
+        name: `${data.firstName} ${data.lastName}`,
+        email: data.email,
+        password_hash: data.password,
+        role: 'student', // Default to student for self-registration
+        career: data.career,
+        studentId: studentId,
+        yearOfStudy: '1er Año', // Default for new students
+        dni: data.dni,
+        address: data.address,
+        profilePictureUrl: `https://ui-avatars.com/api/?name=${data.firstName}+${data.lastName}&background=random`,
+    };
+
+    mockUsers.push(newUser);
+    
+    // Return user without password
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { password_hash, ...userWithoutPassword } = newUser;
+    return userWithoutPassword;
 };
