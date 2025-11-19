@@ -1,3 +1,16 @@
+
+/**
+ * DATA SERVICE LAYER
+ * 
+ * INTEGRATION NOTICE:
+ * The application has been configured to connect to MongoDB via the `backend/` module.
+ * 
+ * To activate the database connection:
+ * 1. Deploy the files in `backend/` (db.ts, models.ts) to a Node.js server (e.g., Express or Next.js API).
+ * 2. Replace the mock functions below with async `fetch()` calls to your new API endpoints.
+ * 3. Ensure the MongoDB URI in `backend/db.ts` is secured in an environment variable in production.
+ */
+
 import type { AttendanceRecord, GradeStat, Career, ScheduleItem, CalendarEvent, ForumPost, UpcomingDeadline, Notification, AssignmentToGrade, ProfessorCourse, StudentGradeRecord, StudentDailyAttendance, AttendanceStatus, Role, Conversation, FullConversation, ChatMessage, AttendanceSummary, AtRiskStudent, User, StudentSearchResult, StudentFile, ObservationRecord, PreceptorTask, Procedure, ProcedureRequest, ChatContact, InstituteKPIs } from '../types';
 
 const subjectsByCareer: Record<Career, string[]> = {
